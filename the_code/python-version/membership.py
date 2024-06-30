@@ -8,8 +8,9 @@ class SportsClubApp:
         # Set the main window properties
         self.root = root
         self.root.title("Sports Club Membership Application")
-        self.root.geometry('600x400')
-        self.root.configure(bg='light green')
+        self.root.geometry('400x400')
+        self.root.config(bg='lightgreen') #not working..?
+        # tk.Tk().config(bg='lightgreen')
         self.current_file = None
         self.members = []
 
