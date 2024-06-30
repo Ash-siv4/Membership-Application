@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Application</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>Sports Club Membership Application</h1>
+    <div id="app">
+        <button type="button" id="openFileButton">Open File</button>
+        <form id="memberForm">
+            <label for="membershipNumber">Membership Number:</label>
+            <input type="text" id="membershipNumber" required><br><br>
+
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" required><br><br>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" required><br><br>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" required><br><br>
+
+            <label for="postcode">Postcode:</label>
+            <input type="text" id="postcode" required><br><br>
+
+            <label for="gender">Gender (M/F):</label>
+            <input type="text" id="gender" required><br><br>
+
+            <label for="joinDate">Join Date (dd/mm/yyyy):</label>
+            <input type="text" id="joinDate" required><br><br>
+
+            <label for="membershipType">Type of Membership (F/S/T/B):</label>
+            <input type="text" id="membershipType" required><br><br>
+
+            <label for="subscriptionMonth">Subscription Due Month:</label>
+            <select id="subscriptionMonth" required>
+                <option value="Jan">January</option>
+                <option value="Feb">February</option>
+                <option value="Mar">March</option>
+                <option value="Apr">April</option>
+                <option value="May">May</option>
+                <option value="Jun">June</option>
+                <option value="Jul">July</option>
+                <option value="Aug">August</option>
+                <option value="Sep">September</option>
+                <option value="Oct">October</option>
+                <option value="Nov">November</option>
+                <option value="Dec">December</option>
+            </select><br><br>
+
+            <button type="button" id="addMemberButton">Add Member</button>
+        </form>
+        <div id="buttons">
+            <button type="button" id="printRecordsButton">Print Records</button>
+            <button type="button" id="exportTxtButton">Export as TXT</button>
+            <button type="button" id="exportCsvButton">Export as CSV</button>
+        </div>
+        <div id="output"></div>
+    </div>
+    
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
