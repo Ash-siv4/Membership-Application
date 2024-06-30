@@ -9,3 +9,13 @@ F
 05/11/2016
 S
 Nov
+Membership Number: 000000
+First Name: 
+Last Name: 
+Address: 
+Postcode: 
+Gender: F
+Join Date: 11/11/1111
+Type of Membership: B
+Subscription Due Month: Jan
+

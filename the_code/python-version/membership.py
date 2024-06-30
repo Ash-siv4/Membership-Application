@@ -5,9 +5,11 @@ import os
 
 class SportsClubApp:
     def __init__(self, root):
+        # Set the main window properties
         self.root = root
         self.root.title("Sports Club Membership Application")
         self.root.geometry('600x400')
+        self.root.configure(bg='light green')
         self.current_file = None
         self.members = []
 
@@ -15,23 +17,27 @@ class SportsClubApp:
         self.tab_control = ttk.Notebook(root)
         self.tab_control.pack(expand=1, fill='both')
 
+        # Create frames for each tab
         self.file_tab = ttk.Frame(self.tab_control)
         self.records_tab = ttk.Frame(self.tab_control)
 
+        # Add frames to the tab control
         self.tab_control.add(self.file_tab, text='File')
         self.tab_control.add(self.records_tab, text='Records')
 
-        # Initialize file menu and records display area
-        self.initialize_file_tab()
-        self.initialize_records_tab()
+        # Initialise file menu and records display area
+        self.initialise_file_tab()
+        self.initialise_records_tab()
 
-        # Initialize member details entry form
-        self.initialize_entry_form()
+        # Initialise member details entry form
+        self.initialise_entry_form()
 
-    def initialize_file_tab(self):
+    def initialise_file_tab(self):
+        # Create a menu bar
         self.file_menu = tk.Menu(self.root)
         self.root.config(menu=self.file_menu)
 
+        # Create a file menu
         file_menu = tk.Menu(self.file_menu, tearoff=0)
         self.file_menu.add_cascade(label="File", menu=file_menu)
         file_menu.add_command(label="Open File", command=self.open_file)
@@ -39,23 +45,27 @@ class SportsClubApp:
         file_menu.add_separator()
         file_menu.add_command(label="Exit", command=self.exit_application)
 
+        # Create a label and button for file operations
         self.file_label = tk.Label(self.file_tab, text="File Operations", font=("Arial", 14))
         self.file_label.pack(pady=10)
 
         self.file_button = tk.Button(self.file_tab, text="Open File", command=self.open_file)
         self.file_button.pack()
 
-    def initialize_records_tab(self):
+    def initialise_records_tab(self):
+        # Create a label and button for records
         self.records_label = tk.Label(self.records_tab, text="Records", font=("Arial", 14))
         self.records_label.pack(pady=10)
 
         self.print_button = tk.Button(self.records_tab, text="Print Records", command=self.print_records)
         self.print_button.pack()
 
+        # Create a text area to display records
         self.records_text = tk.Text(self.records_tab, height=10, width=60)
         self.records_text.pack(pady=10)
 
-    def initialize_entry_form(self):
+    def initialise_entry_form(self):
+        # Create a frame for member details entry form
         self.entry_frame = ttk.Frame(self.root)
         self.tab_control.add(self.entry_frame, text='Enter Member Details')
 
@@ -93,8 +103,9 @@ class SportsClubApp:
         self.membership_type_entry.grid(row=7, column=1, padx=10, pady=5)
 
         tk.Label(self.entry_frame, text="Subscription Due Month (Jan/Feb/etc.):", fg="black").grid(row=8, column=0, padx=10, pady=5, sticky='e')
-        self.subscription_month_entry = tk.Entry(self.entry_frame, width=20)
+        self.subscription_month_entry = ttk.Combobox(self.entry_frame, width=18, values=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
         self.subscription_month_entry.grid(row=8, column=1, padx=10, pady=5)
+        self.subscription_month_entry.set('Jan')
 
         # Submit Button
         submit_button = tk.Button(self.entry_frame, text="Submit", command=self.add_member)
@@ -188,9 +199,10 @@ class SportsClubApp:
         self.gender_entry.delete(0, tk.END)
         self.join_date_entry.delete(0, tk.END)
         self.membership_type_entry.delete(0, tk.END)
-        self.subscription_month_entry.delete(0, tk.END)
+        self.subscription_month_entry.set('Jan')
 
     def open_file(self):
+        # Open a file dialog to select a file
         self.current_file = filedialog.askopenfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt")])
         if self.current_file:
             messagebox.showinfo("File Opened", f"Opened file: {self.current_file}")
@@ -202,6 +214,7 @@ class SportsClubApp:
         messagebox.showinfo("File Closed", "File closed successfully")
 
     def print_records(self):
+        # Ensure a file is open before printing records
         if not self.current_file:
             self.show_error_message(7, "File not opened. Please open a file first.")
             return
@@ -223,17 +236,21 @@ class SportsClubApp:
             self.show_error_message(8, f"Failed to print records to file: {str(e)}")
 
     def show_error_message(self, error_code, message):
+        # Display error messages in a message box
         error_message = f"{error_code}: {message}"
         messagebox.showerror("Error", error_message)
 
     def exit_application(self):
+        # Confirm before exiting the application
         if messagebox.askokcancel("Exit", "Do you want to exit the application?"):
             self.root.destroy()
 
     def run(self):
+        # Start the Tkinter main loop
         self.root.mainloop()
 
 if __name__ == "__main__":
+    # Create the main window and run the application
     root = tk.Tk()
     app = SportsClubApp(root)
     app.run()
