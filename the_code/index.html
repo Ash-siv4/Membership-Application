@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Membership Application</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.14/jspdf.plugin.autotable.min.js"></script>
+
     <style>
         table {
             width: 100%;
@@ -18,56 +21,66 @@
             background-color: #f2f2f2;
         }
     </style>
+    
 </head>
 <body>
     <h1>Sports Club Membership</h1>
+    
+    <!-- Membership Form -->
     <form id="memberForm">
         <label for="membershipNumber">Membership Number:</label>
-        <input type="text" id="membershipNumber"><br><br>
+        <input type="text" id="membershipNumber" required><br><br>
 
         <label for="firstName">First Name:</label>
-        <input type="text" id="firstName"><br><br>
+        <input type="text" id="firstName" required><br><br>
 
         <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName"><br><br>
+        <input type="text" id="lastName" required><br><br>
 
         <label for="address">Address:</label>
-        <input type="text" id="address"><br><br>
+        <input type="text" id="address" required><br><br>
 
         <label for="postcode">Postcode:</label>
-        <input type="text" id="postcode"><br><br>
+        <input type="text" id="postcode" required><br><br>
 
         <label for="gender">Gender (M/F):</label>
-        <input type="text" id="gender"><br><br>
+        <input type="text" id="gender" required><br><br>
 
         <label for="joinDate">Join Date (dd/mm/yyyy):</label>
-        <input type="text" id="joinDate"><br><br>
+        <input type="text" id="joinDate" required><br><br>
 
         <label for="membershipType">Type of Membership (F/S/T/B):</label>
-        <input type="text" id="membershipType"><br><br>
+        <input type="text" id="membershipType" required><br><br>
 
-        <label for="subscriptionMonth">Subscription Due Month (MMM):</label>
-        <input list="months" id="subscriptionMonth"><br><br>
-        <datalist id="months">
-            <option value="Jan">
-            <option value="Feb">
-            <option value="Mar">
-            <option value="Apr">
-            <option value="May">
-            <option value="Jun">
-            <option value="Jul">
-            <option value="Aug">
-            <option value="Sep">
-            <option value="Oct">
-            <option value="Nov">
-            <option value="Dec">
-        </datalist>
+        <label for="subscriptionMonth">Subscription Due Month:</label>
+        <select id="subscriptionMonth" required>
+            <option value="Jan">January</option>
+            <option value="Feb">February</option>
+            <option value="Mar">March</option>
+            <option value="Apr">April</option>
+            <option value="May">May</option>
+            <option value="Jun">June</option>
+            <option value="Jul">July</option>
+            <option value="Aug">August</option>
+            <option value="Sep">September</option>
+            <option value="Oct">October</option>
+            <option value="Nov">November</option>
+            <option value="Dec">December</option>
+        </select><br><br>
 
         <button type="button" id="addMemberButton">Add Member</button>
     </form>
+
+    <!-- Action Buttons -->
     <button type="button" id="printRecordsButton">Print Records</button>
+    <button type="button" id="exportTxtButton">Export as TXT</button>
+    <button type="button" id="exportCsvButton">Export as CSV</button>
+
+    <!-- Output Area -->
     <pre id="output"></pre>
 
+    <!-- Script Imports -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> -->
     <script type="module" src="app.js"></script>
 </body>
 </html>
