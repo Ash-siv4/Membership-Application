@@ -1,48 +1,64 @@
-import { appendToFile } from './fileOperations.js';
-import { validateMembershipNumber, validateGender, validateJoinDate, validateMembershipType, validateSubscriptionMonth } from './validation.js';
+import {
+  validateMembershipNumber,
+  validateGender,
+  validateJoinDate,
+  validateMembershipType,
+} from "./validation.js";
+import { appendToFile, isFileOpened } from "./fileOperations.js";
+import { showError, clearOutput } from "./ui.js";
 
 export function addMember() {
-    const membershipNumber = document.getElementById('membershipNumber').value;
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const address = document.getElementById('address').value;
-    const postcode = document.getElementById('postcode').value;
-    const gender = document.getElementById('gender').value;
-    const joinDate = document.getElementById('joinDate').value;
-    const membershipType = document.getElementById('membershipType').value;
-    const subscriptionMonth = document.getElementById('subscriptionMonth').value;
+  const membershipNumber = document
+    .getElementById("membershipNumber")
+    .value.trim();
+  const firstName = document.getElementById("firstName").value.trim();
+  const lastName = document.getElementById("lastName").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const postcode = document.getElementById("postcode").value.trim();
+  const gender = document.getElementById("gender").value.trim().toUpperCase();
+  const joinDate = document.getElementById("joinDate").value.trim();
+  const membershipType = document
+    .getElementById("membershipType")
+    .value.trim()
+    .toUpperCase();
+  const subscriptionMonth = document
+    .getElementById("subscriptionMonth")
+    .value.trim();
 
-    let errorCode = validateMembershipNumber(membershipNumber);
-    if (errorCode) {
-        alert(`${errorCode}: Membership Number is not valid`);
-        return;
-    }
+  const membershipNumberError = validateMembershipNumber(membershipNumber);
+  const genderError = validateGender(gender);
+  const joinDateError = validateJoinDate(joinDate);
+  const membershipTypeError = validateMembershipType(membershipType);
 
-    errorCode = validateGender(gender);
-    if (errorCode) {
-        alert(`${errorCode}: Gender must be F or M`);
-        return;
-    }
+  if (
+    membershipNumberError ||
+    genderError ||
+    joinDateError ||
+    membershipTypeError
+  ) {
+    showError(
+      membershipNumberError ||
+        genderError ||
+        joinDateError ||
+        membershipTypeError
+    );
+    return;
+  }
 
-    errorCode = validateJoinDate(joinDate);
-    if (errorCode) {
-        alert(`${errorCode}: Invalid Join Date`);
-        return;
-    }
+  const memberRecord = `${membershipNumber.padStart(6, "0")} ${firstName.padEnd(
+    20,
+    " "
+  )} ${lastName.padEnd(20, " ")} ${address.padEnd(
+    30,
+    " "
+  )} ${gender} ${joinDate} ${membershipType} ${subscriptionMonth}`;
 
-    errorCode = validateMembershipType(membershipType);
-    if (errorCode) {
-        alert(`${errorCode}: Membership type must be F, S, T or B`);
-        return;
-    }
+  if (!isFileOpened()) {
+    showError("7: File not open - (i.e., you haven’t opened it yet)");
+    return;
+  }
 
-    errorCode = validateSubscriptionMonth(subscriptionMonth);
-    if (errorCode) {
-        alert(`${errorCode}: Subscription month invalid`);
-        return;
-    }
-
-    const record = `${membershipNumber}\t${firstName}\t${lastName}\t${address}\t${postcode}\t${gender}\t${joinDate}\t${membershipType}\t${subscriptionMonth}`;
-    appendToFile(record);
-    alert('Member added successfully');
+  appendToFile(memberRecord);
+  clearOutput();
+  showError("Member added successfully.");
 }

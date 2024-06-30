@@ -1,56 +1,33 @@
-let fileOpened = false;
-const fileName = "members.txt";
 let fileContent = "";
+let fileOpened = false;
 
 export function openFile() {
+  // Simulate opening a file (e.g., via file input element in HTML)
+  // For demonstration, we'll set a dummy file content
+  fileContent =
+    "MembershipNumber,FirstName,LastName,Address,Gender,JoinDate,MembershipType,SubscriptionMonth\r\n";
   fileOpened = true;
-  // Simulate reading an existing file from localStorage
-  const storedContent = localStorage.getItem(fileName);
-  if (storedContent) {
-    fileContent = storedContent;
-  } else {
-    localStorage.setItem(fileName, "");
+  console.log("File opened successfully.");
+}
+
+export function getFileContent() {
+  if (!fileOpened) {
+    console.error("File not opened.");
+    return "";
   }
-  alert("File opened successfully");
+  return fileContent;
+}
+
+export function appendToFile(data) {
+  if (!fileOpened) {
+    console.error("File not opened.");
+    return;
+  }
+  fileContent += `${data}\r\n`; // Append data with newline
 }
 
 export function isFileOpened() {
   return fileOpened;
 }
 
-export function appendToFile(record) {
-  if (fileOpened) {
-    fileContent += record + "\r\n";
-    localStorage.setItem(fileName, fileContent);
-  } else {
-    alert("Please open a data file first.");
-  }
-}
-
-export function exportToFile(format) {
-  if (fileOpened) {
-    let exportedContent = fileContent;
-    if (format === "csv") {
-      exportedContent = convertToCsv(fileContent);
-    }
-    const blob = new Blob([exportedContent], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `members.${format}`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  } else {
-    alert("Please open a data file first.");
-  }
-}
-
-export function getFileContent() {
-  return fileContent;
-}
-
-function convertToCsv(text) {
-  const rows = text.trim().split("\r\n");
-  return rows.map((row) => row.split("\t").join(",")).join("\r\n");
-}
+// Additional export functions for file operations can be added here as needed
