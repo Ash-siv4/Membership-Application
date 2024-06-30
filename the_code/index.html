@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Membership Application</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
     <h1>Sports Club Membership</h1>
@@ -38,7 +52,7 @@
         <button type="button" id="addMemberButton">Add Member</button>
     </form>
     <button type="button" id="printRecordsButton">Print Records</button>
-    <pre id="output"></pre>
+    <div id="output"></div>
 
     <script type="module" src="app.js"></script>
 </body>
