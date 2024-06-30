@@ -5,6 +5,7 @@ import {
   validateMembershipType,
   validateSubscriptionMonth,
 } from "./validation.js";
+import { appendToFile } from "./fileOperations.js";
 
 let members = [];
 
@@ -63,6 +64,11 @@ export function addMember() {
 
   members.push(member);
   alert("Member added successfully");
+
+  // Append to file
+  const record = `${membershipNumber}\r\n${firstName}\r\n${lastName}\r\n${address}\r\n${postcode}\r\n${gender}\r\n${joinDate}\r\n${membershipType}\r\n${subscriptionMonth}`;
+  appendToFile(record);
+
   document.getElementById("memberForm").reset();
 }
 

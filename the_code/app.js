@@ -1,4 +1,4 @@
-import { openFile, isFileOpened } from "./fileOperations.js";
+import { openFile, isFileOpened, appendToFile } from "./fileOperations.js";
 import { addMember } from "./member.js";
 import { printRecords } from "./ui.js";
 

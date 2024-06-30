@@ -47,12 +47,26 @@
         <input type="text" id="membershipType"><br><br>
 
         <label for="subscriptionMonth">Subscription Due Month (MMM):</label>
-        <input type="text" id="subscriptionMonth"><br><br>
+        <input list="months" id="subscriptionMonth"><br><br>
+        <datalist id="months">
+            <option value="Jan">
+            <option value="Feb">
+            <option value="Mar">
+            <option value="Apr">
+            <option value="May">
+            <option value="Jun">
+            <option value="Jul">
+            <option value="Aug">
+            <option value="Sep">
+            <option value="Oct">
+            <option value="Nov">
+            <option value="Dec">
+        </datalist>
 
         <button type="button" id="addMemberButton">Add Member</button>
     </form>
     <button type="button" id="printRecordsButton">Print Records</button>
-    <div id="output"></div>
+    <pre id="output"></pre>
 
     <script type="module" src="app.js"></script>
 </body>
