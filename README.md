@@ -36,7 +36,11 @@ This project was created as a web-based recreation of a Java-based `membership.e
 
 ## Installation
 
-Since this application runs in a web browser and uses localStorage for data storage, simply open `index.html` in your preferred web browser to use the application.
+There are two versions of this application.
+
+**Version 1** - runs in a web browser and uses localStorage for data storage, simply open `index.html` in your preferred web browser to use the application.
+
+**Version 2** - runs on Python. Simply navigate to the `the_code/python-version` directory and follow the instructions stated in the sub-directory's README. 
 
 ## Notes
 
