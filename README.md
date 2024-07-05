@@ -1,10 +1,5 @@
 # Sports Club Membership Application
 
-> [!IMPORTANT]  
-> This README is relevant to running the Python version of the application.
-> Once this repository is cloned, you must checkout into the `dev` branch in order to have access to the Membership.py file.
-> The steps for this are provided below, if followed correctly, there should be no issues.
-
 ## Overview
 
 The Sports Club Membership Application is a Python-based GUI application built using Tkinter. It allows users to enter and manage member details for a sports club, including features to open and save member records to a text file, validate input fields, and print member details.
@@ -29,7 +24,6 @@ The Sports Club Membership Application is a Python-based GUI application built u
    ```bash
    git clone https://github.com/Ash-siv4/Membership-Application.git
    cd Membership-Application
-   git checkout dev
    ```
 
 2. **Run the application**:
@@ -90,16 +84,17 @@ The Sports Club Membership Application is a Python-based GUI application built u
 
 ### Error Messages
 
-- **Error Codes and Messages**:
-  1. Membership Number is not numeric.
-  2. Membership Number is not 6 digits.
-  3. Membership Number is not a valid modulus 11 number.
-  4. Gender must be F or M.
-  5. Membership type must be F, S, T, or B.
-  6. Invalid Join Date.
-  7. File not open - (i.e., you haven’t opened it yet).
-  8. File not opened - (i.e., it can’t be opened).
-  9. Subscription month invalid.
+| Error Code | Error Message                                      |
+| :--------: | -------------------------------------------------- |
+|     1      | Membership Number is not numeric                   |
+|     2      | Membership Number is not 6 digits                  |
+|     3      | Membership Number is not a valid modulus 11 number |
+|     4      | Gender must be F or M                              |
+|     5      | Membership type must be F, S, T, or B              |
+|     6      | Invalid Join Date                                  |
+|     7      | File not open - (i.e., you haven’t opened it yet)  |
+|     8      | File not opened - (i.e., it can’t be opened)       |
+|     9      | Subscription month invalid                         |
 
 ### Running the Application
 
