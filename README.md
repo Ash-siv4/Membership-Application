@@ -84,16 +84,17 @@ The Sports Club Membership Application is a Python-based GUI application built u
 
 ### Error Messages
 
-- **Error Codes and Messages**:
-  1. Membership Number is not numeric.
-  2. Membership Number is not 6 digits.
-  3. Membership Number is not a valid modulus 11 number.
-  4. Gender must be F or M.
-  5. Membership type must be F, S, T, or B.
-  6. Invalid Join Date.
-  7. File not open - (i.e., you haven’t opened it yet).
-  8. File not opened - (i.e., it can’t be opened).
-  9. Subscription month invalid.
+| Error Code | Error Message                                      |
+| :--------: | -------------------------------------------------- |
+|     1      | Membership Number is not numeric                   |
+|     2      | Membership Number is not 6 digits                  |
+|     3      | Membership Number is not a valid modulus 11 number |
+|     4      | Gender must be F or M                              |
+|     5      | Membership type must be F, S, T, or B              |
+|     6      | Invalid Join Date                                  |
+|     7      | File not open - (i.e., you haven’t opened it yet)  |
+|     8      | File not opened - (i.e., it can’t be opened)       |
+|     9      | Subscription month invalid                         |
 
 ### Running the Application
 
