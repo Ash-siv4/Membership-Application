@@ -8,8 +8,7 @@ class SportsClubApp:
         # Set the main window properties
         self.root = root
         self.root.title("Sports Club Membership Application")
-        self.root.geometry('400x400')
-        self.root.config(bg='lightgreen') #not working..?
+        self.root.geometry('450x400')
         self.current_file = None
         self.members = []
 
@@ -18,7 +17,6 @@ class SportsClubApp:
         self.style.configure('TFrame', background='light green')
         self.style.configure('TLabel', background='light green')
         self.style.configure('TButton', background='light green')
-        self.style.configure('TCombobox', fieldbackground='light green', background='light green')
 
         # Create tabs
         self.tab_control = ttk.Notebook(root)
@@ -70,53 +68,57 @@ class SportsClubApp:
         # Create a text area to display records
         self.records_text = tk.Text(self.records_tab, height=10, width=60)
         self.records_text.pack(pady=10)
+        self.records_text.configure(state='disabled')  # Set the text area to read-only
 
     def initialise_entry_form(self):
         # Create a frame for member details entry form
         self.entry_frame = ttk.Frame(self.root)
-        self.tab_control.add(self.entry_frame, text='Enter Member Details')
+        self.tab_control.add(self.entry_frame, text='Member form')
+
+        # Title
+        ttk.Label(self.entry_frame, text="Enter Member Details", font=("Arial", 14)).grid(row=0, columnspan=2, pady=10)
 
         # Labels and Entries
-        ttk.Label(self.entry_frame, text="Membership Number:", foreground="black").grid(row=0, column=0, padx=10, pady=5, sticky='e')
-        self.mem_num_entry = tk.Entry(self.entry_frame, width=20)
-        self.mem_num_entry.grid(row=0, column=1, padx=10, pady=5)
+        ttk.Label(self.entry_frame, text="Membership Number:", foreground="black").grid(row=1, column=0, padx=10, pady=5, sticky='e')
+        self.mem_num_entry = tk.Entry(self.entry_frame, width=26)
+        self.mem_num_entry.grid(row=1, column=1, padx=10, pady=5)
 
-        ttk.Label(self.entry_frame, text="First Name:", foreground="black").grid(row=1, column=0, padx=10, pady=5, sticky='e')
-        self.first_name_entry = tk.Entry(self.entry_frame, width=20)
-        self.first_name_entry.grid(row=1, column=1, padx=10, pady=5)
+        ttk.Label(self.entry_frame, text="First Name:", foreground="black").grid(row=2, column=0, padx=10, pady=5, sticky='e')
+        self.first_name_entry = tk.Entry(self.entry_frame, width=26)
+        self.first_name_entry.grid(row=2, column=1, padx=10, pady=5)
 
-        ttk.Label(self.entry_frame, text="Last Name:", foreground="black").grid(row=2, column=0, padx=10, pady=5, sticky='e')
-        self.last_name_entry = tk.Entry(self.entry_frame, width=20)
-        self.last_name_entry.grid(row=2, column=1, padx=10, pady=5)
+        ttk.Label(self.entry_frame, text="Last Name:", foreground="black").grid(row=3, column=0, padx=10, pady=5, sticky='e')
+        self.last_name_entry = tk.Entry(self.entry_frame, width=26)
+        self.last_name_entry.grid(row=3, column=1, padx=10, pady=5)
 
-        ttk.Label(self.entry_frame, text="Address:", foreground="black").grid(row=3, column=0, padx=10, pady=5, sticky='e')
-        self.address_entry = tk.Entry(self.entry_frame, width=20)
-        self.address_entry.grid(row=3, column=1, padx=10, pady=5)
+        ttk.Label(self.entry_frame, text="Address:", foreground="black").grid(row=4, column=0, padx=10, pady=5, sticky='e')
+        self.address_entry = tk.Entry(self.entry_frame, width=26)
+        self.address_entry.grid(row=4, column=1, padx=10, pady=5)
 
-        ttk.Label(self.entry_frame, text="Postcode:", foreground="black").grid(row=4, column=0, padx=10, pady=5, sticky='e')
-        self.postcode_entry = tk.Entry(self.entry_frame, width=20)
-        self.postcode_entry.grid(row=4, column=1, padx=10, pady=5)
+        ttk.Label(self.entry_frame, text="Postcode:", foreground="black").grid(row=5, column=0, padx=10, pady=5, sticky='e')
+        self.postcode_entry = tk.Entry(self.entry_frame, width=26)
+        self.postcode_entry.grid(row=5, column=1, padx=10, pady=5)
 
-        ttk.Label(self.entry_frame, text="Gender (M/F):", foreground="black").grid(row=5, column=0, padx=10, pady=5, sticky='e')
-        self.gender_entry = tk.Entry(self.entry_frame, width=20)
-        self.gender_entry.grid(row=5, column=1, padx=10, pady=5)
+        ttk.Label(self.entry_frame, text="Gender (M/F):", foreground="black").grid(row=6, column=0, padx=10, pady=5, sticky='e')
+        self.gender_entry = tk.Entry(self.entry_frame, width=26)
+        self.gender_entry.grid(row=6, column=1, padx=10, pady=5)
 
-        ttk.Label(self.entry_frame, text="Join Date (dd/mm/yyyy):", foreground="black").grid(row=6, column=0, padx=10, pady=5, sticky='e')
-        self.join_date_entry = tk.Entry(self.entry_frame, width=20)
-        self.join_date_entry.grid(row=6, column=1, padx=10, pady=5)
+        ttk.Label(self.entry_frame, text="Join Date (dd/mm/yyyy):", foreground="black").grid(row=7, column=0, padx=10, pady=5, sticky='e')
+        self.join_date_entry = tk.Entry(self.entry_frame, width=26)
+        self.join_date_entry.grid(row=7, column=1, padx=10, pady=5)
 
-        ttk.Label(self.entry_frame, text="Type of Membership (F/S/T/B):", foreground="black").grid(row=7, column=0, padx=10, pady=5, sticky='e')
-        self.membership_type_entry = tk.Entry(self.entry_frame, width=20)
-        self.membership_type_entry.grid(row=7, column=1, padx=10, pady=5)
+        ttk.Label(self.entry_frame, text="Type of Membership (F/S/T/B):", foreground="black").grid(row=8, column=0, padx=10, pady=5, sticky='e')
+        self.membership_type_entry = tk.Entry(self.entry_frame, width=26)
+        self.membership_type_entry.grid(row=8, column=1, padx=10, pady=5)
 
-        ttk.Label(self.entry_frame, text="Subscription Due Month (Jan/Feb/etc.):", foreground="black").grid(row=8, column=0, padx=10, pady=5, sticky='e')
-        self.subscription_month_entry = ttk.Combobox(self.entry_frame, width=18, values=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
-        self.subscription_month_entry.grid(row=8, column=1, padx=10, pady=5)
-        self.subscription_month_entry.set('Jan')
+        ttk.Label(self.entry_frame, text="Subscription Due Month (Jan/Feb/etc.):", foreground="black").grid(row=9, column=0, padx=10, pady=5, sticky='e')
+        self.subscription_month_entry = ttk.Combobox(self.entry_frame, width=24, values=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
+        self.subscription_month_entry.grid(row=9, column=1, padx=10, pady=5)
+        self.subscription_month_entry.set('Enter/select')
 
         # Submit Button
         submit_button = ttk.Button(self.entry_frame, text="Submit", command=self.add_member)
-        submit_button.grid(row=9, columnspan=2, pady=10)
+        submit_button.grid(row=10, columnspan=2, pady=10)
 
     def add_member(self):
         # Validate inputs
@@ -145,11 +147,31 @@ class SportsClubApp:
         }
         self.members.append(member_details)
 
+        # Display member details in the text area
+        self.display_member_details(member_details)
+
         # Clear entry fields
         self.clear_entry_fields()
 
         # Display success message
         messagebox.showinfo("Success", "Member details added successfully.")
+
+    def display_member_details(self, member_details):
+        # Temporarily enable the text area
+        self.records_text.configure(state='normal')
+        # Display member details in the text area
+        self.records_text.insert(tk.END, f"Membership Number: {member_details['Membership Number']}\n")
+        self.records_text.insert(tk.END, f"First Name: {member_details['First Name']}\n")
+        self.records_text.insert(tk.END, f"Last Name: {member_details['Last Name']}\n")
+        self.records_text.insert(tk.END, f"Address: {member_details['Address']}\n")
+        self.records_text.insert(tk.END, f"Postcode: {member_details['Postcode']}\n")
+        self.records_text.insert(tk.END, f"Gender: {member_details['Gender']}\n")
+        self.records_text.insert(tk.END, f"Join Date: {member_details['Join Date']}\n")
+        self.records_text.insert(tk.END, f"Type of Membership: {member_details['Type of Membership']}\n")
+        self.records_text.insert(tk.END, f"Subscription Due Month: {member_details['Subscription Due Month']}\n")
+        self.records_text.insert(tk.END, "\n")
+        # Set the text area to read-only
+        self.records_text.configure(state='disabled')
 
     def is_valid_membership_number(self):
         mem_number = self.mem_num_entry.get()
@@ -206,7 +228,7 @@ class SportsClubApp:
         self.gender_entry.delete(0, tk.END)
         self.join_date_entry.delete(0, tk.END)
         self.membership_type_entry.delete(0, tk.END)
-        self.subscription_month_entry.set('Jan')
+        self.subscription_month_entry.set('Enter/select')
 
     def open_file(self):
         # Open a file dialog to select a file
@@ -221,24 +243,11 @@ class SportsClubApp:
         messagebox.showinfo("File Closed", "File closed successfully")
 
     def print_records(self):
-        # Ensure a file is open before printing records
-        if not self.current_file:
-            self.show_error_message(7, "File not opened. Please open a file first.")
-            return
-
+        # Save the details in the text area to a new file
         try:
-            with open(self.current_file, 'a') as f:
-                for member in self.members:
-                    f.write(f"Membership Number: {member['Membership Number']}\n")
-                    f.write(f"First Name: {member['First Name']}\n")
-                    f.write(f"Last Name: {member['Last Name']}\n")
-                    f.write(f"Address: {member['Address']}\n")
-                    f.write(f"Postcode: {member['Postcode']}\n")
-                    f.write(f"Gender: {member['Gender']}\n")
-                    f.write(f"Join Date: {member['Join Date']}\n")
-                    f.write(f"Type of Membership: {member['Type of Membership']}\n")
-                    f.write(f"Subscription Due Month: {member['Subscription Due Month']}\n\n")
-            messagebox.showinfo("Records Printed", f"Records printed to file: {self.current_file}")
+            with open('members.txt', 'w') as f:
+                f.write(self.records_text.get("1.0", tk.END))
+            messagebox.showinfo("Records Printed", "Records printed to file: members.txt")
         except Exception as e:
             self.show_error_message(8, f"Failed to print records to file: {str(e)}")
 
