@@ -19,3 +19,23 @@ Join Date: 11/11/1111
 Type of Membership: B
 Subscription Due Month: Jan
 
+Membership Number: 000000
+First Name: a
+Last Name: v
+Address: as
+Postcode: dsf
+Gender: M
+Join Date: 11/11/1111
+Type of Membership: S
+Subscription Due Month: Jan
+
+Membership Number: 000000
+First Name: a
+Last Name: b
+Address: 
+Postcode: 
+Gender: M
+Join Date: 11/11/1111
+Type of Membership: T
+Subscription Due Month: Jan
+
