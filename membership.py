@@ -10,9 +10,15 @@ class SportsClubApp:
         self.root.title("Sports Club Membership Application")
         self.root.geometry('400x400')
         self.root.config(bg='lightgreen') #not working..?
-        # tk.Tk().config(bg='lightgreen')
         self.current_file = None
         self.members = []
+
+        # Configure style for ttk widgets
+        self.style = ttk.Style()
+        self.style.configure('TFrame', background='light green')
+        self.style.configure('TLabel', background='light green')
+        self.style.configure('TButton', background='light green')
+        self.style.configure('TCombobox', fieldbackground='light green', background='light green')
 
         # Create tabs
         self.tab_control = ttk.Notebook(root)
@@ -47,18 +53,18 @@ class SportsClubApp:
         file_menu.add_command(label="Exit", command=self.exit_application)
 
         # Create a label and button for file operations
-        self.file_label = tk.Label(self.file_tab, text="File Operations", font=("Arial", 14))
+        self.file_label = ttk.Label(self.file_tab, text="File Operations", font=("Arial", 14))
         self.file_label.pack(pady=10)
 
-        self.file_button = tk.Button(self.file_tab, text="Open File", command=self.open_file)
+        self.file_button = ttk.Button(self.file_tab, text="Open File", command=self.open_file)
         self.file_button.pack()
 
     def initialise_records_tab(self):
         # Create a label and button for records
-        self.records_label = tk.Label(self.records_tab, text="Records", font=("Arial", 14))
+        self.records_label = ttk.Label(self.records_tab, text="Records", font=("Arial", 14))
         self.records_label.pack(pady=10)
 
-        self.print_button = tk.Button(self.records_tab, text="Print Records", command=self.print_records)
+        self.print_button = ttk.Button(self.records_tab, text="Print Records", command=self.print_records)
         self.print_button.pack()
 
         # Create a text area to display records
@@ -71,45 +77,45 @@ class SportsClubApp:
         self.tab_control.add(self.entry_frame, text='Enter Member Details')
 
         # Labels and Entries
-        tk.Label(self.entry_frame, text="Membership Number:", fg="black").grid(row=0, column=0, padx=10, pady=5, sticky='e')
+        ttk.Label(self.entry_frame, text="Membership Number:", foreground="black").grid(row=0, column=0, padx=10, pady=5, sticky='e')
         self.mem_num_entry = tk.Entry(self.entry_frame, width=20)
         self.mem_num_entry.grid(row=0, column=1, padx=10, pady=5)
 
-        tk.Label(self.entry_frame, text="First Name:", fg="black").grid(row=1, column=0, padx=10, pady=5, sticky='e')
+        ttk.Label(self.entry_frame, text="First Name:", foreground="black").grid(row=1, column=0, padx=10, pady=5, sticky='e')
         self.first_name_entry = tk.Entry(self.entry_frame, width=20)
         self.first_name_entry.grid(row=1, column=1, padx=10, pady=5)
 
-        tk.Label(self.entry_frame, text="Last Name:", fg="black").grid(row=2, column=0, padx=10, pady=5, sticky='e')
+        ttk.Label(self.entry_frame, text="Last Name:", foreground="black").grid(row=2, column=0, padx=10, pady=5, sticky='e')
         self.last_name_entry = tk.Entry(self.entry_frame, width=20)
         self.last_name_entry.grid(row=2, column=1, padx=10, pady=5)
 
-        tk.Label(self.entry_frame, text="Address:", fg="black").grid(row=3, column=0, padx=10, pady=5, sticky='e')
+        ttk.Label(self.entry_frame, text="Address:", foreground="black").grid(row=3, column=0, padx=10, pady=5, sticky='e')
         self.address_entry = tk.Entry(self.entry_frame, width=20)
         self.address_entry.grid(row=3, column=1, padx=10, pady=5)
 
-        tk.Label(self.entry_frame, text="Postcode:", fg="black").grid(row=4, column=0, padx=10, pady=5, sticky='e')
+        ttk.Label(self.entry_frame, text="Postcode:", foreground="black").grid(row=4, column=0, padx=10, pady=5, sticky='e')
         self.postcode_entry = tk.Entry(self.entry_frame, width=20)
         self.postcode_entry.grid(row=4, column=1, padx=10, pady=5)
 
-        tk.Label(self.entry_frame, text="Gender (M/F):", fg="black").grid(row=5, column=0, padx=10, pady=5, sticky='e')
+        ttk.Label(self.entry_frame, text="Gender (M/F):", foreground="black").grid(row=5, column=0, padx=10, pady=5, sticky='e')
         self.gender_entry = tk.Entry(self.entry_frame, width=20)
         self.gender_entry.grid(row=5, column=1, padx=10, pady=5)
 
-        tk.Label(self.entry_frame, text="Join Date (dd/mm/yyyy):", fg="black").grid(row=6, column=0, padx=10, pady=5, sticky='e')
+        ttk.Label(self.entry_frame, text="Join Date (dd/mm/yyyy):", foreground="black").grid(row=6, column=0, padx=10, pady=5, sticky='e')
         self.join_date_entry = tk.Entry(self.entry_frame, width=20)
         self.join_date_entry.grid(row=6, column=1, padx=10, pady=5)
 
-        tk.Label(self.entry_frame, text="Type of Membership (F/S/T/B):", fg="black").grid(row=7, column=0, padx=10, pady=5, sticky='e')
+        ttk.Label(self.entry_frame, text="Type of Membership (F/S/T/B):", foreground="black").grid(row=7, column=0, padx=10, pady=5, sticky='e')
         self.membership_type_entry = tk.Entry(self.entry_frame, width=20)
         self.membership_type_entry.grid(row=7, column=1, padx=10, pady=5)
 
-        tk.Label(self.entry_frame, text="Subscription Due Month (Jan/Feb/etc.):", fg="black").grid(row=8, column=0, padx=10, pady=5, sticky='e')
+        ttk.Label(self.entry_frame, text="Subscription Due Month (Jan/Feb/etc.):", foreground="black").grid(row=8, column=0, padx=10, pady=5, sticky='e')
         self.subscription_month_entry = ttk.Combobox(self.entry_frame, width=18, values=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
         self.subscription_month_entry.grid(row=8, column=1, padx=10, pady=5)
         self.subscription_month_entry.set('Jan')
 
         # Submit Button
-        submit_button = tk.Button(self.entry_frame, text="Submit", command=self.add_member)
+        submit_button = ttk.Button(self.entry_frame, text="Submit", command=self.add_member)
         submit_button.grid(row=9, columnspan=2, pady=10)
 
     def add_member(self):
